@@ -4,7 +4,9 @@
   <div class="container">
     <h1>Welcome to Voter</h1>
     <p class="lead">Create polls and view their results in real-time</p>
-    <a class="btn-success btn" href="/login">Login</a>
+    <a ng-show="isLoggedIn()" class="btn-success btn" href="/login">Register</a>
+    <a ng-hide="isLoggedIn()" class="btn-success btn" href="/new">New Poll</a>
+    <a ng-hide="isLoggedIn()" class="btn-primary btn" href="/polls">View Polls</a>
   </div>
 </header>
 
@@ -23,7 +25,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <i class="fa fa-twitter"></i>
-        <h2>Social Intergration</h2>
+        <h2>Social Integration</h2>
         <p>Our social media toolset provides users with the ability to quickly view and share any poll results.</p>
       </div>
     </div>
@@ -31,7 +33,7 @@
 </div>
 <footer class="footer">
   <div class="container">
-      <p>FreeCodeCamp Basejump Project | 
+      <p>FreeCodeCamp Basejump Project |
         <a href="http://twitter.com/blindprimate">Eric Cleek</a>
       </p>
   </div>

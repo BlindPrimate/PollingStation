@@ -8,4 +8,4 @@ angular.module('votingAppApp')
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       });
-  });
+});

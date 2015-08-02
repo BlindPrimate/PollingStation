@@ -3,8 +3,11 @@
 angular.module('votingAppApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
+      'title' : 'New Poll',
+      'link': '/new'
+    }, {
+      'title': 'Polls',
+      'link': '/polls'
     }];
 
     $scope.isCollapsed = true;
