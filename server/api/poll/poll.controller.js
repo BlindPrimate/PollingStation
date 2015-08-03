@@ -1,22 +1,13 @@
-/**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /poll              ->  index
- * POST    /poll              ->  create
- * GET     /poll/:id          ->  show
- * PUT     /poll/:id          ->  update
- * DELETE  /poll/:id          ->  destroy
- */
-
 'use strict';
 
 var _ = require('lodash');
 var Poll = require('./poll.model');
 
-// Get list of things
+// Get list of polls
 exports.index = function(req, res) {
-  Poll.find(function (err, things) {
+  Poll.find(function (err, polls) {
     if(err) { return handleError(res, err); }
-    return res.status(200).json(things);
+    return res.status(200).json(polls);
   });
 };
 
@@ -29,7 +20,7 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new thing in the DB.
+// Creates a new poll in the DB.
 exports.create = function(req, res) {
   Poll.create(req.body, function(err, poll) {
     if(err) { return handleError(res, err); }

@@ -1,6 +1,10 @@
 
 
 
+.input-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 h1 {
   text-align: center;
@@ -8,12 +12,9 @@ h1 {
 
 
 form {
-  .input-group {
-    margin-bottom: 10px;
-  }
   label {
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 }
 

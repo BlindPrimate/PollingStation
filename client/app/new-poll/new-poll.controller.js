@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('votingAppApp')
   .controller('NewPollCtrl', function ($http, $scope) {
     $scope.question = "Who was the best Bond?";

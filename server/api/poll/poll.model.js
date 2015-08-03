@@ -5,10 +5,10 @@ var mongoose = require('mongoose'),
 
 var PollSchema = new Schema({
   question: String,
-  options: {
+  option: [{
     label: String,
     votes: Number
-  }
+  }]
 });
 
 module.exports = mongoose.model('Poll', PollSchema);
