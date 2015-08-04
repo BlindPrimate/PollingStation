@@ -2,13 +2,15 @@
 <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-controller="NewPollCtrl">
   <h2 id="poll-title">{{poll.question}}</h2>
   <h3 id="poll-author">by {{poll.author}}</h3>
-  <form id="submit-vote">
+  <form id="submit-vote" ng-submit="submitVote(currChoice)">
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="option in poll.options track by $index">
-        <input type="radio" name="option" value="{{option.label}}" id="option{{$index}}" class="list-group-item"/>
+        <input type="radio" name="option" value="{{$index}}" id="option{{$index}}" class="list-group-item" ng-model="$parent.currChoice"/>
         <label for="option{{$index}}">{{option.label}}</label>
       </li>
     </ul>
+    <div>{{currChoice}}</div>
+    <div>{{poll}}</div>
     <button class="btn btn-success center-block">Vote</button>
   </form>
 
