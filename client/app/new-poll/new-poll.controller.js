@@ -31,7 +31,7 @@ angular.module('votingAppApp')
 
     $scope.submit = function() {
       $http.post('/api/polls', $scope.poll).success(function () {
-        console.log('check');
+        console.log('success');
       });
     }
   });

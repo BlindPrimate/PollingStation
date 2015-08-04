@@ -9,8 +9,8 @@
       <input class="form-control" type="text" placeholder="{{option.label}}" ng-model="option.label">
       <span class="input-group-addon" ng-click="removeOption($index)">Remove</span>
     </div>
-    <div id="add-btn" class="btn btn-default" ng-click="addOption()">Add option</div>
-    <div id="submit-btn" class="btn btn-primary">Submit</div>
+    <button id="add-btn" class="btn btn-default" ng-click="addOption()">Add option</button>
+    <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
     <div>{{poll}}</div>
 
   </form>
