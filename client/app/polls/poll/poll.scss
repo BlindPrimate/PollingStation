@@ -1,0 +1,22 @@
+#submit-vote {
+  input {
+    display: inline-block;
+    float: left;
+  }
+  label {
+    margin: 0 0 0 20px;
+    display: inline-block;
+    font-weight: 300;
+  }
+}
+
+
+#poll-author, #poll-title {
+  text-align: center;
+}
+
+#poll-author {
+  font-size: 1.2em;
+}
+
+

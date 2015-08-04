@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 var PollSchema = new Schema({
   question: String,
+  author: String,
   options: [{
     label: String,
     votes: Number,

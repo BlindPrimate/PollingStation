@@ -3,6 +3,8 @@
   <h1>Polls</h1>
   <div>{{polls}}</div>
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="poll in polls">{{poll.question}}</li>
+    <li class="list-group-item" ng-repeat="poll in polls">
+      <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a>
+    </li>
   </ul>
 </div>
