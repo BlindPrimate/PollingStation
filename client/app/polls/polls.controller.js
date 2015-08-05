@@ -1,10 +1,14 @@
 'use strict';
 
 angular.module('votingAppApp')
-  .controller('PollsCtrl', function ($scope, $http) {
+  .controller('PollsCtrl', function ($scope, $http, pollFactory) {
 
-    $http.get('/api/polls').success(function(data) {
+    pollFactory.getPolls().success (function (data) {
       $scope.polls = data;
-    })
+    }).error(function (err) {
+      console.log(err);
+      $scope.polls = null;
+    });
+
 
   });

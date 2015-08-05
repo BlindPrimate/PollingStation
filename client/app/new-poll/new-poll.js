@@ -6,6 +6,7 @@ angular.module('votingAppApp')
       .state('new-poll', {
         url: '/new-poll',
         templateUrl: 'app/new-poll/new-poll.html',
-        controller: 'NewPollCtrl'
+        controller: 'NewPollCtrl',
+        authenticate: true
       });
   });

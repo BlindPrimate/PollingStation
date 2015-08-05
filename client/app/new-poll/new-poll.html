@@ -3,7 +3,7 @@
   <h1>New Poll</h1>
   <form ng-submit="submit()">
     <label for="question">Poll question</label>
-    <input class="form-control" name="question" type="text" id="question" ng-model="question">
+    <input class="form-control" name="question" type="text" id="question" ng-model="poll.question">
     <label>Options</label>
     <div class="input-group" ng-repeat="option in poll.options track by $index">
       <input class="form-control" type="text" placeholder="{{option.label}}" ng-model="option.label">
