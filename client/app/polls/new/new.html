@@ -9,8 +9,7 @@
       <input class="form-control" name="pollChoice" type="text" placeholder="{{option.label}}" ng-model="option.label" required>
       <span class="input-group-addon" ng-click="removeOption($index)">Remove</span>
     </div>
-    <button id="add-btn" class="btn btn-default" ng-click="addOption()">Add option</button>
+    <button type="button" id="add-btn" class="btn btn-default" ng-click="addOption()">Add option</button>
     <button type="submit" id="submit-btn" class="btn btn-primary" ng-disabled="newPollForm.$invalid">Submit</button>
-    <div class="alert alert-success" role="success">You poll was submitted.</div>
   </form>
 </div>

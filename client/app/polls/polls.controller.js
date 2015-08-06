@@ -7,7 +7,6 @@ angular.module('votingAppApp')
       $scope.polls = data;
     }).error(function (err) {
       console.log(err);
-      $scope.polls = null;
     });
 
 

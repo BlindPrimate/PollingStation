@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('votingAppApp')
-  .controller('PollCtrl', function ($scope, $stateParams, $http, pollFactory) {
+  .controller('PollCtrl', function ($scope, $stateParams, $http, Auth, pollFactory) {
+    
+
 
     function buildChart(pollData) {
         var labels = [],
@@ -10,36 +12,35 @@ angular.module('votingAppApp')
             labels.push(pollData.options[i].label);
             votes.push(pollData.options[i].votes);
         }
-        return {title: pollData.question, labels: labels, votes: votes};
-    }
-
-
-    pollFactory.getPoll($stateParams.id).success(function (data) {
-        $scope.poll = data;
-        var chartData = buildChart(data);
 
         $scope.pollResults = {
-            labels: chartData.labels,
+            labels: labels,
             datasets: [
             {
-              label: chartData.question,
+              label: pollData.question,
               fillColor: 'rgba(220,220,220,0.5)',
               strokeColor: 'rgba(220,220,220,0.8)',
               highlightFill: 'rgba(220,220,220,0.75)',
               highlightStroke: 'rgba(220,220,220,1)',
-              data: chartData.votes
+              data: votes
             }
             ]
         };
+    }
+
+
+
+    pollFactory.getPoll($stateParams.id).success(function (data) {
+        $scope.poll = data;
+        buildChart(data);     
     }).error(function (err) {
         console.log(err);
     });
 
+
+
     $scope.currChoice = '';
 
-    
-
-    
 
     $scope.chartOptions = {
 
@@ -75,7 +76,10 @@ angular.module('votingAppApp')
     };
     
     $scope.submitVote = function (choice) {
-      pollFactory.changeVote($stateParams.id, choice);
+      pollFactory.changeVote($stateParams.id, choice).success(function (updatedPoll) {
+        $scope.poll = updatedPoll;
+        buildChart(updatedPoll);
+      });
     }
 
 

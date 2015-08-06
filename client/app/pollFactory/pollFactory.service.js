@@ -15,9 +15,9 @@ angular.module('votingAppApp')
         return $http.get(api_url + poll_id);
       },
       changeVote: function (poll_id, option_index) {
-        $http.get(api_url + poll_id).success(function (poll) {
+        return $http.get(api_url + poll_id).success(function (poll) {
           poll.options[option_index].votes += 1;
-          $http.put(api_url + poll_id, poll);
+          return $http.put(api_url + poll_id, poll);
         });
       },
       submitPoll: function (poll) {

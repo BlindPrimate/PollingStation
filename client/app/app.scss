@@ -4,9 +4,21 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
 
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+
+// App-wide Variables
+$roboto:  'Roboto', sans-serif;
+
+
 /**
  * App-wide Styles
  */
+
+
+body {
+    font-family: $roboto;
+}
 
 .browsehappy {
     margin: 0.2em 0;
