@@ -1,5 +1,5 @@
 angular.module('votingAppApp')
-  .controller('NewPollCtrl', function ($scope, $http, Auth) {
+  .controller('NewPollCtrl', function ($scope, $http, Auth, $location, pollFactory) {
     $scope.poll = {
       question: "Who was the best James Bond?",
       author: Auth.getCurrentUser().name,
@@ -17,10 +17,6 @@ angular.module('votingAppApp')
       ]
     };
 
-    console.log($scope);
-
-
-
 
     $scope.removeOption = function(index) {
       $scope.poll.options.splice(index, 1);
@@ -28,14 +24,14 @@ angular.module('votingAppApp')
 
     $scope.addOption = function () {
       $scope.poll.options.push({
-        label: "Option",
+        label: "",
         votes: 0
       });
     };
 
     $scope.submit = function() {
-      $http.post('/api/polls', $scope.poll).success(function () {
-        console.log('success');
+      pollFactory.submitPoll($scope.poll).success(function (submittedPoll) {
+        $location.path('/polls/' + submittedPoll._id);
       });
-    }
+    };
   });

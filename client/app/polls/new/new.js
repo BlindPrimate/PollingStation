@@ -3,9 +3,9 @@
 angular.module('votingAppApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('new-poll', {
-        url: '/new-poll',
-        templateUrl: 'app/new-poll/new-poll.html',
+      .state('polls/new', {
+        url: '/polls/new',
+        templateUrl: 'app/polls/new/new.html',
         controller: 'NewPollCtrl',
         authenticate: true
       });

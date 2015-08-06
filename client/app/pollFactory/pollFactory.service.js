@@ -19,7 +19,9 @@ angular.module('votingAppApp')
           poll.options[option_index].votes += 1;
           $http.put(api_url + poll_id, poll);
         });
+      },
+      submitPoll: function (poll) {
+        return $http.post(api_url, poll);
       }
-
     }
   });

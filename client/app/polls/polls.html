@@ -1,8 +1,8 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-controller="PollsCtrl">
   <h1>Polls</h1>
-  <div>{{polls}}</div>
-  <p ng-hide="poll">Couldn't find your poll</p>
+  <h2 ng-hide="poll">Oops, looks like there aren't any polls to see</h2>
+  <a class="new-poll-btn btn btn-success" href="/polls/new"><i class="fa fa-plus"></i>Create New Poll</a>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="poll in polls">
       <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a>

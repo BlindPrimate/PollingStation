@@ -3,9 +3,6 @@
 angular.module('votingAppApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title' : 'New Poll',
-      'link': '/new-poll'
-    }, {
       'title': 'Polls',
       'link': '/polls'
     }];
