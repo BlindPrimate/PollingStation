@@ -3,7 +3,7 @@
 angular.module('votingAppApp')
   .controller('PollCtrl', function ($scope, $stateParams, $http, Auth, pollFactory) {
     
-
+    var currUsrId = Auth.getCurrentUser()._id;
 
     function buildChart(pollData) {
         var labels = [],
@@ -32,6 +32,10 @@ angular.module('votingAppApp')
 
     pollFactory.getPoll($stateParams.id).success(function (data) {
         $scope.poll = data;
+        if (currUsrId.indexOf(data.users_voted) === -1) {
+          $scope.pollTaken = true;
+          console.log('check');
+        } 
         buildChart(data);     
     }).error(function (err) {
         console.log(err);
@@ -76,7 +80,7 @@ angular.module('votingAppApp')
     };
     
     $scope.submitVote = function (choice) {
-      pollFactory.changeVote($stateParams.id, choice).success(function (updatedPoll) {
+      pollFactory.submitVote($stateParams.id, choice, Auth.getCurrentUser()._id).success(function (updatedPoll) {
         $scope.poll = updatedPoll;
         buildChart(updatedPoll);
       });
