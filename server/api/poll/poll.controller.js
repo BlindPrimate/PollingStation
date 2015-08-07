@@ -11,6 +11,14 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of polls authored by user
+exports.userPolls = function(req, res) {
+  Poll.find({'author.user_id' : req.params.id}, function (err, polls) {
+    if(err) { return handleError(res, err); }
+    return res.status(200).json(polls);
+  });
+}
+
 // Get a single poll
 exports.show = function(req, res) {
   Poll.findById(req.params.id, function (err, poll) {
@@ -53,6 +61,10 @@ exports.destroy = function(req, res) {
     });
   });
 };
+
+
+
+
 
 function handleError(res, err) {
   return res.status(500).send(err);

@@ -11,6 +11,9 @@ angular.module('votingAppApp')
       getPolls: function () {
         return $http.get(api_url);
       },
+      getUserPolls: function (user_id) {
+        return $http.get(api_url + 'user/' + user_id);
+      },
       getPoll: function (poll_id) {
         return $http.get(api_url + poll_id);
       },
@@ -23,6 +26,9 @@ angular.module('votingAppApp')
       },
       submitPoll: function (poll) {
         return $http.post(api_url, poll);
+      },
+      deletePoll: function (poll) {
+        return $http.delete(api_url + poll);
       }
     }
   });

@@ -1,7 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-controller="PollCtrl">
-  <h2 id="poll-title">{{poll.question}}</h2>
-  <h3 id="poll-author">created by {{poll.author}}</h3>
+<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+  <h1 id="poll-title">{{poll.question}}</h1>
+  <h2 id="poll-author">created by {{poll.author.name}}</h2>
   <form id="submit-vote" name="voteForm" ng-submit="submitVote(currChoice)" ng-hide="pollTaken" novalidate>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="option in poll.options track by $index">
@@ -12,6 +12,4 @@
     <button type="submit" class="btn btn-success center-block" ng-disabled="voteForm.$invalid">Vote</button>
   </form>
   <canvas tc-chartjs-bar chart-data="pollResults" chart-options="chartOptions" ng-show="pollTaken"></canvas>
-  {{currUsrId}}
-
 </div>

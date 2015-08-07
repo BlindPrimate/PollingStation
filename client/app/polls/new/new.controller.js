@@ -2,7 +2,10 @@ angular.module('votingAppApp')
   .controller('NewPollCtrl', function ($scope, $http, Auth, $location, pollFactory) {
     $scope.poll = {
       question: "Who was the best James Bond?",
-      author: Auth.getCurrentUser().name,
+      author: {
+        name: Auth.getCurrentUser().name,
+        user_id: Auth.getCurrentUser()._id
+      },
       options: [
         {
           label: "Sean Connery",
