@@ -4,17 +4,16 @@ angular.module('votingAppApp')
   .controller('SettingsCtrl', function ($scope, User, Auth, pollFactory) {
     $scope.errors = {};
 
-
-    console.log(Auth.getCurrentUser()._id);
+    // returns and displays polls created by current user
     pollFactory.getUserPolls(Auth.getCurrentUser()._id).success(function (pollData) {
-      if (jQuery.isEmptyObject(pollData)) {
+      if (pollData.length < 1) {
         $scope.polls = null;
       } else {
         $scope.polls = pollData; 
       }   
     });
 
-
+    // deletes targeted poll from database
     $scope.deletePoll = function (target_id) {
       pollFactory.deletePoll(target_id).success(function () {
         $scope.polls = $scope.polls.filter(function (poll) {
@@ -22,6 +21,9 @@ angular.module('votingAppApp')
             return poll;
           }
         });
+        if ($scope.polls.length < 1) {
+          $scope.polls = null;
+        }
       });
     }
 
