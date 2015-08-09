@@ -30,8 +30,8 @@ User.find({}).remove(function() {
 
 Poll.find({}).remove(function () {
   Poll.create({
-    question: "Best Programming Lanuage?",
-    author: "The Best User",
+    question: "Best Programming Language?",
+    author: {name: "smartguy"},
     options: [{
       label: "Python",
       votes: 31
@@ -45,5 +45,6 @@ Poll.find({}).remove(function () {
       label: "Java",
       votes: 20 
     }],
+    totalVotes: 103
   })
 });

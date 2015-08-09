@@ -5,7 +5,6 @@ angular.module('votingAppApp')
     // Service logic
     // ...
 
-
     // random color generator
     function randomColor() {
       var letters = '0123456789ABCDEF'.split('');
@@ -25,6 +24,34 @@ angular.module('votingAppApp')
           votes.push(pollData.options[i].votes);
       }
       return {labels: labels, votes: votes};  
+    }
+
+    // lightens/shades target color
+    function lightenDarkenColor(col,amt) {
+        var usePound = false;
+        if ( col[0] == "#" ) {
+            col = col.slice(1);
+            usePound = true;
+        }
+
+        var num = parseInt(col,16);
+
+        var r = (num >> 16) + amt;
+
+        if ( r > 255 ) r = 255;
+        else if  (r < 0) r = 0;
+
+        var b = ((num >> 8) & 0x00FF) + amt;
+
+        if ( b > 255 ) b = 255;
+        else if  (b < 0) b = 0;
+
+        var g = (num & 0x0000FF) + amt;
+
+        if ( g > 255 ) g = 255;
+        else if  ( g < 0 ) g = 0;
+
+        return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
     }
 
 
@@ -47,19 +74,21 @@ angular.module('votingAppApp')
       doughnutChart: function (pollData) {
         var basicData = dataFormat(pollData);
         var doughnutChartData = []; 
-        //var colors = ["#F7464A", "#46BFBD", "#FDB45C" ];
-        //var highlights = ["#FF5A5E", "#5AD3D1", "#FFC870"];
         for (var i = 0; i < basicData.labels.length; i++) {
+          var randCol = randomColor();
+          var highlight = lightenDarkenColor(randCol, 30);
           doughnutChartData.push({
             value: basicData.votes[i],
-            color: randomColor(),
-            highlight: "#000000",
+            // color: "#ffffff",
+            color: randCol,
+            // highlight: "#000000",
+            highlight: highlight,
             label: basicData.labels[i]
           });
         }
         return doughnutChartData;
       },
-      chartOptions: function () {
+      barChartOptions: function () {
         return {
 
           // Sets the chart to be responsive
@@ -91,6 +120,39 @@ angular.module('votingAppApp')
 
           //String - A legend template
           legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+        }
+      },
+      doughnutChartOptions: function () {
+        return {
+
+          responsive : true,
+          //Boolean - Whether we should show a stroke on each segment
+          segmentShowStroke : true,
+
+          //String - The colour of each segment stroke
+          segmentStrokeColor : "#fff",
+
+          //Number - The width of each segment stroke
+          segmentStrokeWidth : 2,
+
+          //Number - The percentage of the chart that we cut out of the middle
+          percentageInnerCutout : 70, // This is 0 for Pie charts
+
+          //Number - Amount of animation steps
+          animationSteps : 80,
+
+          //String - Animation easing effect
+          animationEasing : "easeOutSine",
+
+          //Boolean - Whether we animate the rotation of the Doughnut
+          animateRotate : true,
+
+          //Boolean - Whether we animate scaling the Doughnut from the centre
+          animateScale : false,
+
+          //String - A legend template
+          legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+
         }
       }
     };

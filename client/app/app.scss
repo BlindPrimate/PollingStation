@@ -10,8 +10,17 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 // App-wide Variables
 $roboto:  'Roboto', sans-serif;
 
+// colors
+$accent-yellow: #EFE164;
+$yellow: #E3D649;
+$dark-blue: #607883;
+$neutral-blue: #D0DDE3;
+$off-white: #f4f7f7;
+$light-blue: #EFEFEF;
+$primary-text: #193742;
 
-/**
+
+/**dark
  * App-wide Styles
  */
 
@@ -20,11 +29,28 @@ body {
     font-family: $roboto;
 }
 
+
+.navbar-text {
+  margin-left: 15px;
+}
+
+
+
+
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
+}
+
+.footer {
+    text-align: center;
+    background: $light-blue;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
 }
 
 

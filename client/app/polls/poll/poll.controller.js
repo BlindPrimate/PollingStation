@@ -11,10 +11,10 @@ angular.module('votingAppApp')
     function buildCharts(chartData) {
       $scope.barChartData = chartBuilder.barChart(chartData);
       $scope.doughnutChartData = chartBuilder.doughnutChart(chartData);
-      $scope.chartOptions = chartBuilder.chartOptions();
+      $scope.barChartOptions = chartBuilder.barChartOptions();
+      $scope.doughnutChartOptions = chartBuilder.doughnutChartOptions();
     }
 
-    console.log(chartBuilder.chartOptions);
 
     // retrieve poll results
     pollFactory.getPoll($stateParams.id).success(function (data) {

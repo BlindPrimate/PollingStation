@@ -15,7 +15,8 @@ var PollSchema = new Schema({
     votes: Number,
     _id: false
   }],
-  users_voted: []
+  users_voted: [],
+  totalVotes: Number
 });
 
 module.exports = mongoose.model('Poll', PollSchema);

@@ -17,7 +17,8 @@ angular.module('votingAppApp')
           label: "Roger Moore",
           votes: 0
         }
-      ]
+      ],
+      totalVotes: 0   
     };
 
 

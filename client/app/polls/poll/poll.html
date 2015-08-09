@@ -1,26 +1,36 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="">
+<div class="container">
   <h1 id="poll-title">{{poll.question}}</h1>
   <h2 id="poll-author">created by {{poll.author.name}}</h2>
-  <form id="submit-vote" name="voteForm" class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-submit="submitVote(currChoice)" ng-hide="pollTaken" novalidate>
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat="option in poll.options track by $index">
-        <input type="radio" name="option" value="{{$index}}" id="option{{$index}}" class="list-group-item" ng-model="$parent.currChoice" required/>
-        <label for="option{{$index}}">{{option.label}}</label>
-      </li>
-    </ul>
-    <div class="alert alert-warning" ng-hide="isLoggedIn()">Please <a href="/login">Log in</a> to vote and view results</div>    
-    <button type="submit" class="btn btn-success center-block" ng-disabled="voteForm.$invalid || !isLoggedIn()">Vote</button>
-  </form>
-  <div id="charts" class="container">
-    <div class="row">
-      <div class="chart col-lg-6 col-md-6 col-sm-6">
-        <canvas tc-chartjs-bar chart-data="barChartData" chart-options="chartOptions" ng-show="pollTaken"></canvas>
-      </div>
-      <div class="chart col-lg-6 col-md-6 col-sm-6">
-        <canvas tc-chartjs-doughnut chart-data="doughnutChartData" chart-options="chartOptions" ng-show="pollTaken"></canvas>
+  <div id="poll-options" class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4" ng-hide="pollTaken">
+    <form id="submit-vote" name="voteForm" ng-submit="submitVote(currChoice)"  novalidate>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="option in poll.options track by $index">
+          <input type="radio" name="option" value="{{$index}}" id="option{{$index}}" class="list-group-item" ng-model="$parent.currChoice" required/>
+          <label for="option{{$index}}">{{option.label}}</label>
+        </li>
+      </ul>
+      <div class="alert" ng-hide="isLoggedIn()">Please <a href="/login">Log in</a> to vote and view results</div>    
+      <button type="submit" class="btn btn-success center-block" ng-disabled="voteForm.$invalid || !isLoggedIn()">Vote</button>
+    </form>
+  </div>
+  
+  <div id="charts" class="container" ng-if="pollTaken">
+    <div class="row panel panel-default">
+      <div class="panel-heading">Poll Results</div>
+      <div class="panel-body">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div>
+            <canvas tc-chartjs-bar chart-data="barChartData" chart-options="barChartOptions"></canvas>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div>
+            <canvas tc-chartjs-doughnut chart-data="doughnutChartData" chart-options="doughnutChartOptions"></canvas>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
 </div>
+<div ng-include="'components/footer/footer.html'"></div>
