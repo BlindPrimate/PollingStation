@@ -1,48 +1,64 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
-<div class="container col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-md-offset-4">
-  <div class="row">
-    <h1 ng-show="!polls">You haven't submitted any polls</h1>
-    <div ng-show="polls">
-      <h1>Your polls</h1>
-      <ul class="list-group">
-        <li class="list-group-item" ng-repeat="poll in polls">
-          <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a><button type="button" class="btn btn-default fa fa-trash pull-right" ng-click="deletePoll(poll._id)"></button>
-        </li>
-      </ul>
-    </div>
-    <div class="col-sm-12">
-      <h1>Change Password</h1>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
-
-        <div class="form-group">
-          <label>Current Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
-                 mongoose-error/>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
-              {{ errors.other }}
-          </p>
+<div id="settings">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+  <div class="container clearfix col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-md-offset-4">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Your polls</h3>
         </div>
-
-        <div class="form-group">
-          <label>New Password</label>
-
-          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
-                 ng-minlength="3"
-                 required/>
-          <p class="help-block"
-             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
-            Password must be at least 3 characters.
-          </p>
+        <div class="panel-body">
+          <h1 ng-show="!polls">You haven't submitted any polls</h1>
+          <div ng-show="polls">
+            <ul class="list-group">
+              <li class="list-group-item" ng-repeat="poll in polls">
+                <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a><button type="button" class="btn btn-default fa fa-trash pull-right" ng-click="deletePoll(poll._id)"></button>
+              </li>
+            </ul>
+          </div>        
         </div>
+      </div>
+    </div>
 
-        <p class="help-block"> {{ message }} </p>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3>Change Password</h3></div>
+        <div class="panel-body">
+          <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
 
-        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
-      </form>
+            <div class="form-group">
+              <label>Current Password</label>
+
+              <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                     mongoose-error/>
+              <p class="help-block" ng-show="form.password.$error.mongoose">
+                  {{ errors.other }}
+              </p>
+            </div>
+
+            <div class="form-group">
+              <label>New Password</label>
+
+              <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+                     ng-minlength="3"
+                     required/>
+              <p class="help-block"
+                 ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+                Password must be at least 3 characters.
+              </p>
+            </div>
+
+            <p class="help-block"> {{ message }} </p>
+
+            <button class="btn btn-lg btn-primary center-block" type="submit">Save changes</button>
+          </form>
+        </div>
+      </div>   
     </div>
   </div>
+  <div class="clearfix"></div>
+  <div ng-include="'components/footer/footer.html'"></div>
 </div>
+
+
+
+

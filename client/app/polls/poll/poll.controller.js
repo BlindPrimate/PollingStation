@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('votingAppApp')
-  .controller('PollCtrl', function ($scope, $stateParams, $http, Auth, pollFactory, chartBuilder) {
+  .controller('PollCtrl', function ($scope, $stateParams, $http, Auth, $location, pollFactory, chartBuilder) {
     
     var currUsrId = Auth.getCurrentUser()._id;
     $scope.pollTaken = false;
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.currUrl = $location.absUrl();
 
 
     function buildCharts(chartData) {

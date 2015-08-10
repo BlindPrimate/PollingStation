@@ -12,14 +12,30 @@
 
 
 
-
-
-#poll-author, #poll-title {
+#title-card {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 70px;
   text-align: center;
+  #poll-author {
+    font-size: 1.2em;
+  }
 }
 
-#poll-author {
-  font-size: 1.2em;
+
+
+
+.btn-social {
+  outline: none;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
+#social .list-group {
+  list-style-type: none;
+  li {
+    margin: 0 auto;
+  }
+}
 

@@ -6,7 +6,8 @@ angular.module('votingAppApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'tc.chartjs'
+  'tc.chartjs',
+  '720kb.socialshare'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

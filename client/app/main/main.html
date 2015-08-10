@@ -1,34 +1,38 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
+<div id="main">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+  <header class="hero-unit" id="banner">
+    <div class="container">
+      <h1>Welcome to Voter</h1>
+      <p class="lead">Create polls and view their results in real-time</p>
+      <a ng-hide="isLoggedIn()" class="btn-success btn" href="/signup">Register</a>
+      <a ng-show="isLoggedIn()" class="btn-success btn" href="/polls/new">New Poll</a>
+      <a ng-show="isLoggedIn()" class="btn-primary btn" href="/polls">View Polls</a>
+    </div>
+  </header>
+
   <div class="container">
-    <h1>Welcome to Voter</h1>
-    <p class="lead">Create polls and view their results in real-time</p>
-    <a ng-hide="isLoggedIn()" class="btn-success btn" href="/signup">Register</a>
-    <a ng-show="isLoggedIn()" class="btn-success btn" href="/polls/new">New Poll</a>
-    <a ng-show="isLoggedIn()" class="btn-primary btn" href="/polls">View Polls</a>
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 marketing-container">
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <i class="fa fa-line-chart"></i>
-        <h2>Live results</h2>
-        <p>Live graph technology gives us the power of instantaneous results in an easy-to-read format, and a variety of result templates.</p>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <i class="fa fa-mobile"></i>
-        <h2>Cross-platform</h2>
-        <p>Our mobile-first responsive design provides a consistent experience across all platforms with consistently beautiful results.</p>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <i class="fa fa-twitter"></i>
-        <h2>Social Integration</h2>
-        <p>Our social media toolset provides users with the ability to quickly view and share any poll results.</p>
+    <div class="row">
+      <div class="col-lg-12 marketing-container">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <i class="fa fa-line-chart"></i>
+          <h2>Live results</h2>
+          <p>Live graph technology gives us the power of instantaneous results in an easy-to-read format, and a variety of result templates.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <i class="fa fa-mobile"></i>
+          <h2>Cross-platform</h2>
+          <p>Our mobile-first responsive design provides a consistent experience across all platforms with consistently beautiful results.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <i class="fa fa-twitter"></i>
+          <h2>Social Integration</h2>
+          <p>Our social media toolset provides users with the ability to quickly view and share any poll results.</p>
+        </div>
       </div>
     </div>
   </div>
+  <div ng-include="'components/footer/footer.html'"></div>
 </div>
-<div ng-include="'components/footer/footer.html'"></div>
+
+
