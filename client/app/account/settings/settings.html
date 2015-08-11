@@ -11,7 +11,7 @@
           <div ng-show="polls">
             <ul class="list-group">
               <li class="list-group-item" ng-repeat="poll in polls">
-                <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a><button type="button" class="btn btn-default fa fa-trash pull-right" ng-click="deletePoll(poll._id)"></button>
+                <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a><button type="button" class="btn btn-default fa fa-trash pull-right" ng-click="deletePoll('this poll', poll._id)"></button>
               </li>
             </ul>
           </div>        

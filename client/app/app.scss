@@ -11,30 +11,59 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 $roboto:  'Roboto', sans-serif;
 
 // colors
-$accent-yellow: #EFE164;
-$yellow: #E3D649;
-$dark-blue: #607883;
-$neutral-blue: #D0DDE3;
-$off-white: #f4f7f7;
-$light-blue: #EFEFEF;
+// $accent-yellow: #EFE164;
+// $yellow: #E3D649;
+// $dark-blue: #607883;
+// $neutral-blue: #D0DDE3;
+// $off-white: #f4f7f7;
+// $light-blue: #EFEFEF;
 $primary-text: #193742;
+
+$light-blue: #f4f5f9;
+$dark-blue: #507e97;
+$dark-green: #03464c;
+$beige: #ebebe7;
 
 
 /**dark
  * App-wide Styles
  */
 
+* {
+    margin: 0;
+}
+
+html, body {
+    font-family: $roboto;
+    height: 100%;
+}
 
 body {
-    font-family: $roboto;
+    margin-bottom: 60px;
 }
 
 .navbar {
     margin-bottom: 50px;
+    background: $light-blue;
+    border-bottom: 1px solid darken($light-blue, 8%);
 }
 
 .navbar-text {
-  margin-left: 15px;
+    margin-left: 15px;
+}
+
+#new-poll {
+    margin: 0;
+}
+
+
+.panel {
+    .panel-heading {
+        background: $light-blue;
+    }
+    .panel-body {
+        background: lighten($light-blue, 2%);
+    }
 }
 
 
@@ -45,12 +74,23 @@ body {
     padding: 0.2em 0;
 }
 
+
+.page-wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.page-wrapper:after {
+    content: "";
+    display: block;
+}
+
+.footer, .page-wrapper:after {
+    height: 50px;
+}
+
 .footer {
-    text-align: center;
-    background: $light-blue;
-    padding: 30px 0;
-    margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
+
 }
 
 

@@ -1,6 +1,9 @@
 angular.module('votingAppApp')
-  .controller('NewPollCtrl', function ($scope, $http, Auth, $location, pollFactory) {
+  .controller('NewPollCtrl', function ($scope, $http, Auth, $state, pollFactory, $modalInstance) {
     
+    $scope.isLoggedIn = Auth.isLoggedIn;
+
+
     $scope.samplePoll = {
       question: "Who was the best James Bond?",
       options: ["Sean Connery", "Daniel Craig", "Pierce Brosnan", "Roger Moore"]
@@ -44,7 +47,8 @@ angular.module('votingAppApp')
 
     $scope.submit = function() {
       pollFactory.submitPoll($scope.poll).success(function (submittedPoll) {
-        $location.path('/polls/' + submittedPoll._id);
+        $modalInstance.close();
+        $state.go('polls/:id', {id: submittedPoll._id});
       });
     };
   });

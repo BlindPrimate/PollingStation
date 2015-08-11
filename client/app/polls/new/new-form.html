@@ -1,0 +1,21 @@
+<div id="new-poll" class="panel panel-default">
+  <div class="panel-heading">
+    <h3>New Poll</h3>
+  </div>
+  <div class="panel-body">
+    <form name="newPollForm" ng-submit="submit()" novalidate>
+      <label for="question">Poll question</label>
+      <input class="form-control" name="question" type="text" id="question" placeholder="Who was the best James Bond?" ng-model="poll.question">
+      <label>Options</label>
+      <div class="input-group" ng-repeat="option in poll.options track by $index">
+        <input class="form-control" name="pollChoice" type="text" placeholder="{{samplePoll.options[$index]}}" ng-model="option.label" required>
+        <span class="input-group-addon" ng-click="removeOption($index)">Remove</span>
+      </div>
+      <button type="button" id="add-btn" class="btn btn-default" ng-click="addOption()">Add option</button>
+      <div class="btn-group">
+        <button type="submit" id="submit-btn" class="btn btn-primary" ng-disabled="newPollForm.$invalid || !isLoggedIn()">Submit</button>
+        <button type="submit" id="submit-btn" class="btn btn-danger" ng-show="test">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

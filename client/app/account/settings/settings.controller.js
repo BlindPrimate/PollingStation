@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('votingAppApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth, pollFactory) {
+  .controller('SettingsCtrl', function ($scope, User, Auth, pollFactory, Modal) {
     $scope.errors = {};
 
     // returns and displays polls created by current user
@@ -13,8 +13,8 @@ angular.module('votingAppApp')
       }   
     });
 
-    // deletes targeted poll from database
-    $scope.deletePoll = function (target_id) {
+    // displays modal to confirm poll deletion
+    $scope.deletePoll = Modal.confirm.delete(function (target_id) {
       pollFactory.deletePoll(target_id).success(function () {
         $scope.polls = $scope.polls.filter(function (poll) {
           if (poll._id !== target_id) {
@@ -25,7 +25,8 @@ angular.module('votingAppApp')
           $scope.polls = null;
         }
       });
-    }
+    });
+
 
     $scope.changePassword = function(form) {
       $scope.submitted = true;
