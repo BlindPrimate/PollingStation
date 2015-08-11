@@ -5,6 +5,7 @@ angular.module('votingAppApp')
 
     $scope.isLoggedIn = Auth.isLoggedIn();
 
+
     pollFactory.getPolls().success (function (data) {
       $scope.polls = data;
     }).error(function (err) {
@@ -14,7 +15,7 @@ angular.module('votingAppApp')
 
     $scope.newPoll = function () {
 
-      $state.go('polls/new');
+      $state.go('polls.new');
       // if ($scope.isLoggedIn) {
       //   var modalInstance = $modal.open({
       //       templateUrl: "app/polls/new/new-form.html",

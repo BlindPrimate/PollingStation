@@ -3,12 +3,18 @@ angular.module('votingAppApp')
     
     $scope.isLoggedIn = Auth.isLoggedIn;
 
+    // allows proper back button use on modal window
+    $scope.$on('$stateChangeSuccess', function() {
+      $modalInstance.dismiss();
+    });
+
 
     $scope.samplePoll = {
       question: "Who was the best James Bond?",
       options: ["Sean Connery", "Daniel Craig", "Pierce Brosnan", "Roger Moore"]
     }
 
+    // model poll
     $scope.poll = {
       question: "",
       author: {
@@ -47,8 +53,7 @@ angular.module('votingAppApp')
 
     $scope.submit = function() {
       pollFactory.submitPoll($scope.poll).success(function (submittedPoll) {
-        $modalInstance.close();
-        $state.go('polls/:id', {id: submittedPoll._id});
+        $modalInstance.close(submittedPoll);
       });
     };
   });
