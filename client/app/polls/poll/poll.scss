@@ -32,10 +32,15 @@
   padding: 0;
 }
 
-#social .list-group {
-  list-style-type: none;
-  li {
-    margin: 0 auto;
-  }
+
+
+#social {
+  .list-group {
+    list-style-type: none;
+    li {
+      margin: 0 auto;
+      padding: 9px 10px;
+    }
+  } 
 }
 

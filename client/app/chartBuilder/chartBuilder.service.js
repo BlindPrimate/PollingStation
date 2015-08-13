@@ -63,10 +63,10 @@ angular.module('votingAppApp')
           labels: basicData.labels,
           datasets: [{
             label: pollData.question,
-            fillColor: 'rgba(220,220,220,0.5)',
-            strokeColor: 'rgba(220,220,220,0.8)',
-            highlightFill: 'rgba(220,220,220,0.75)',
-            highlightStroke: 'rgba(220,220,220,1)',
+            fillColor: 'rgba(0,121,255,0.1)',
+            strokeColor: 'rgba(0,61,130,0.1)',
+            highlightFill: 'rgba(54,137,255,0.2)',
+            highlightStroke: 'rgba(64,157,255,0.3)',
             data: basicData.votes
           }]
         }

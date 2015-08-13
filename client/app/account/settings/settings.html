@@ -2,16 +2,16 @@
   <div ng-include="'components/navbar/navbar.html'"></div>
   <div class="container clearfix col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-md-offset-4">
     <div class="row">
-      <div class="panel panel-default">
+      <div id="users-polls" class="panel panel-default">
         <div class="panel-heading">
           <h3>Your polls</h3>
         </div>
         <div class="panel-body">
-          <h1 ng-show="!polls">You haven't submitted any polls</h1>
+          <h3 ng-show="!polls">You haven't submitted any polls</h3>
           <div ng-show="polls">
             <ul class="list-group">
-              <li class="list-group-item" ng-repeat="poll in polls">
-                <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a><button type="button" class="btn btn-default fa fa-trash pull-right" ng-click="deletePoll('this poll', poll._id)"></button>
+              <li class="list-group-item clearfix" ng-repeat="poll in polls">
+                <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a><button type="button" class="btn btn-default fa fa-trash" ng-click="deletePoll('this poll', poll._id)"></button>
               </li>
             </ul>
           </div>        
