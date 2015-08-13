@@ -8,9 +8,9 @@
                 </div>
                 <div class="panel-body">
                     <button class="new-poll-btn btn btn-success" ng-click="newPoll()"><i class="fa fa-plus"></i>&nbsp; Create New Poll</button>
-                    <div id="no-polls">
-                      <h3 ng-hide="noPolls">Oops, looks like there aren't any polls to see.</h3>
-                      <h3 ng-hide="noPolls">Why don't you create one.</h3>
+                    <div id="no-polls" ng-hide="polls">
+                      <h3>Oops, looks like there aren't any polls to see.</h3>
+                      <h3>Why don't you create one.</h3>
                     </div>
                         <li class="list-group-item" ng-repeat="poll in polls">
                             <a ng-href="/polls/{{poll._id}}">{{poll.question}}</a>
