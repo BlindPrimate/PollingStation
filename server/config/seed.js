@@ -28,23 +28,23 @@ User.find({}).remove(function() {
 }); 
 
 
-Poll.find({}).remove(function () {
-  Poll.create({
-    question: "Best Programming Language?",
-    author: {name: "smartguy"},
-    options: [{
-      label: "Python",
-      votes: 31
-    }, {
-      label: "Javascript",
-      votes: 40
-    }, {
-      label: "C++",
-      votes: 12
-    }, {
-      label: "Java",
-      votes: 20 
-    }],
-    totalVotes: 103
-  })
-});
+//Poll.find({}).remove(function () {
+  //Poll.create({
+    //question: "Best Programming Language?",
+    //author: {name: "smartguy"},
+    //options: [{
+      //label: "Python",
+      //votes: 31
+    //}, {
+      //label: "Javascript",
+      //votes: 40
+    //}, {
+      //label: "C++",
+      //votes: 12
+    //}, {
+      //label: "Java",
+      //votes: 20 
+    //}],
+    //totalVotes: 103
+  //})
+//});

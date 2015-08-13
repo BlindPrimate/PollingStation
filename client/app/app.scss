@@ -55,12 +55,13 @@ body {
     border-bottom: 1px solid darken($light-blue, 8%);
     .navbar-brand {
         color: $primary-text;
-        font-size: 2em;
+        font-size: 1.6em;
+        padding-top: 18px;
+        padding-right: 50px;
     }
 }
 
 #navbar-main {
-    padding-left: 120px;
     li {
 
     }
