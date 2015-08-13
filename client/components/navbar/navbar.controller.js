@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('votingAppApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $state) {
     $scope.menu = [{
       'title': 'Polls',
-      'link': '/polls'
+      'link': 'polls'
     }];
 
     $scope.isCollapsed = true;
@@ -18,6 +18,7 @@ angular.module('votingAppApp')
     };
 
     $scope.isActive = function(route) {
-      return route === $location.path();
+      var curr = $state.current.name.split('/');
+      return route === curr[0];
     };
   });

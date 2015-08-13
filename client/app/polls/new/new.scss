@@ -6,8 +6,18 @@
   margin-bottom: 5px;
 }
 
-h1 {
-  text-align: center;
+
+#new-poll {
+  .panel {
+    margin-bottom: 0;
+  }
+  #poll-submitted {
+    margin: 100px 0;
+    h3 {
+      text-align: center;
+      font-size: 1.5em;
+    }
+  }
 }
 
 
@@ -26,4 +36,5 @@ form {
 
 #submit-btn {
   display: block;
+  margin: 40px auto 15px auto;
 }

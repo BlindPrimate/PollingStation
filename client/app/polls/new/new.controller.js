@@ -1,7 +1,8 @@
 angular.module('votingAppApp')
-  .controller('NewPollCtrl', function ($scope, $http, Auth, $state, pollFactory, $modalInstance) {
+  .controller('NewPollCtrl', function ($scope, $http, Auth, $state, pollFactory, $modalInstance, $timeout) {
     
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.submitted = false;
 
     // allows proper back button use on modal window
     $scope.$on('$stateChangeSuccess', function() {
@@ -53,7 +54,10 @@ angular.module('votingAppApp')
 
     $scope.submit = function() {
       pollFactory.submitPoll($scope.poll).success(function (submittedPoll) {
-        $modalInstance.close(submittedPoll);
+        $scope.submitted = true;
+        $timeout(function () {
+          $modalInstance.close(submittedPoll);
+        }, 1500);
       });
     };
   });
