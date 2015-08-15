@@ -8,7 +8,7 @@
                 </div>
                 <div class="panel-body">
                     <button class="new-poll-btn btn btn-success" ng-click="newPoll()"><i class="fa fa-plus"></i>&nbsp; Create New Poll</button>
-                    <div id="no-polls" ng-hide="polls">
+                    <div id="no-polls" ng-hide="polls && loaded">
                       <h3>Oops, looks like there aren't any polls to see.</h3>
                       <h3>Why don't you create one.</h3>
                     </div>

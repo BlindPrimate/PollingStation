@@ -5,12 +5,14 @@ angular.module('votingAppApp')
 
     $scope.isLoggedIn = Auth.isLoggedIn();
     $scope.polls = null;
+    $scope.loaded = false;
 
 
     pollFactory.getPolls().success (function (data) {
       if (data.length > 0) {
         $scope.polls = data;
       }
+      $scope.loaded = true;
     }).error(function (err) {
       console.log(err);
     });
